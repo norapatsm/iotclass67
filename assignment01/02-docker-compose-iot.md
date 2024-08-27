@@ -2,13 +2,13 @@
 
 
 ## How to start docker compose
-
-```bash
-
-```
+command
+- docker compose up ทุกcontainer (รอให้ทุกcontainer ดึง image ทั้งหมด)
+- เมื่อดึง image ทั้งหมดเสร็จ ลอง docker compose stop และเริ่มรันแต่ละ container ตามลำดับ 
+ให้ทุกบริการทำงานได้อย่างมีระเบียบและมีประสิทธิภาพ
 
 ## Error we found
-
+บางครั้งอาจมีบริการหรือ container ที่พัง ลองลบ container หรือ ลบ volume และลอง docker compose up ใหม่
 
 ## How to solve the problems.
 
@@ -25,6 +25,7 @@
 
 
 ### IoT Sensor - Dashboards - Grafana URL
+- จะมีค่าต่างๆออกมาที่dashboardของ grafana ทั้งค่า temp, humidity,ความดัน และกราฟ time series 
 
 ### UI for Apache Kafka
 
