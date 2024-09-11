@@ -3,7 +3,7 @@ Internet of things Class 2567
 
 # Table of Contents
 
-- [ ] Main technologies of architectures https://github.com/norapatsm/iotclass67/blob/main/assignment00/architecture.md
+- [ ] [Main technologies of architectures] (assignment00/architecture.md)
 - [ ] Setting up servers and components. https://github.com/norapatsm/iotclass67/blob/main/assignment01/01-install-server.md
 - [ ] Compose services. https://github.com/norapatsm/iotclass67/blob/main/assignment01/02-docker-compose-iot.md
 - [ ] Ingest and store real-time data from IoT sensors. https://github.com/norapatsm/iotclass67/blob/main/assignment04/01-iot-sensor.md
