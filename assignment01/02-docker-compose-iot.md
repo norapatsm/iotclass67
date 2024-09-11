@@ -73,6 +73,7 @@ services:
     links:
       - zookeeper
 ```
+
 - ส่วนของ kafka rest proxy เป็น service ที่ให้ restful API เพื่อเชื่อมต่อกับ Kafka Cluster เพื่อเข้าถึงและจัดการข้อมูลใน kafka ผ่าน http api
 ```
  # The Kafka REST Proxy provides a RESTful interface to a Kafka cluster.
@@ -108,6 +109,7 @@ services:
       - zookeeper
       - kafka
 ```
+##Kafka Connect
 - kafka connect เป็นส่วนในที่ kafka จะเชื่อมต่อกับระบบหรือservice ภายนอก เช่น iot-processor หรือ MongoDB หรือ MQTT protocol ทำให้สื่อสารเข้าออกจากkafkaได้โดยใช้ connectors ที่มีการตั้งค่าไว้
 ```
 # Kafka Connect, an open source component of Apache Kafka,
