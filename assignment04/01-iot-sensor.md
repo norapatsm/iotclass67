@@ -33,6 +33,8 @@ Subscriber จะต้องดักรับข้อมูลจาก Topic
 จากboardที่อ.ให้มาคือ esp32s2dev module cucumberโดยsensorที่ใช้จะมี BMP280 ใช้วัดอุณหภูมิและความดัน SHT4x วัดความชื้น เเละ KY-018ที่ต่อเพิ่มมาตรงขา5เพื่อใช้วัดค่าเเสง รวมถึงมีการให้ทำLEDในการดูสถานะต่างๆ
 
 ![Example Image](cucumber.png)
+
+## code
 ```
 #include <Wire.h>
 #include <Adafruit_BMP280.h>
@@ -438,6 +440,8 @@ void LIGHTBLUELELED() {
     delay(500);
 }
 ```
+
+![Example Image](flowchart.png)
 การทำงาน esp32s2dev module cucumberของผมคือ
 1 เมื่อเครื่องเปิดไฟจะสีเเดง
 2 ทำการเชื่อมต่อwifiหากเชือมต่อไม่ได้หรือกำลังเชื่อมจะขึ้นไฟสีเหลือง
