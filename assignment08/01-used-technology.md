@@ -8,7 +8,7 @@
 - [ ] [Kafka Connect.](/assignment01/02-docker-compose-iot.md#kafka-connect)
 - [ ] [Kafka Rest Proxy](/assignment01/02-docker-compose-iot.md)
 - [ ] [Spring Boot 2.3.3 / Apache Maven 3.6.3.]
-- [ ] [Spring Boot Starter Actuator.]
+- [ ] [Spring Boot Starter Actuator.]       
 - [ ] [Micrometer Registry Prometheus.]
 - [ ] [Prometheus.] (/assignment01/02-docker-compose-iot.md#prometheus)
 - [ ] [Grafana.]
