@@ -12,5 +12,5 @@
 - [ ] [Micrometer Registry Prometheus.]
 - [ ] [Prometheus.] (/assignment01/02-docker-compose-iot.md#prometheus)
 - [ ] [Grafana.]
-- [ ] [Eclipse Mosquitto.]
+- [ ] [Eclipse Mosquitto.](/assignment01/02-docker-compose-iot.md#mosquitto)
 - [ ] [MongoDB.]
