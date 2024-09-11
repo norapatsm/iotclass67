@@ -1,6 +1,6 @@
 # Used technology
 
-- [ ] [Ubuntu Server Installation](assignment01/01-install-server.md)
+- [ ] [Ubuntu Server Installation](/assignment00/assignment01/01-install-server.md)
 - [ ] [Docker Containerization]
 - [ ] [Kafka Streams.]
 - [ ] [Spring Kafka.]
