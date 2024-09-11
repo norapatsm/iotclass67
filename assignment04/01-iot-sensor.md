@@ -8,7 +8,8 @@ MQTT Topic คือหัวข้อที่ใช้ในการรับ
 
 ## MQTT Payload
  esp32s2dev module cucumberจะรับข้อมูลต่าๆจากsensorที่กำหนด เพื่อส่งไปยัง mqtt serverเเต่การส่งข้อมูลไปหาmqtt serverจะต้องมีการกำหนดรูปแบบของ Payloadเพื่อให้mqtt serverสามารถรับข้อมูลได้ โดยรูปเเบบPayloadของกลุ่มผมคือ
- ```StaticJsonDocument<512> jsonDoc;
+ ```
+ StaticJsonDocument<512> jsonDoc;
 jsonDoc["id"] = "43245253";  // รหัสเซ็นเซอร์
 jsonDoc["name"] = sensor_name;  // ชื่อของเซ็นเซอร์
 jsonDoc["place_id"] = "42343243";  // รหัสสถานที่
@@ -18,12 +19,12 @@ JsonObject payload = jsonDoc.createNestedObject("payload");
 payload["temperature"] = temp;      // อุณหภูมิที่วัดได้จาก BMP280
 payload["humidity"] = humid;        // ความชื้นที่วัดได้จาก SHT4x
 payload["pressure"] = pressure;     // ความดันอากาศที่วัดได้จาก BMP280
-payload["luminosity"] = analogval;  // ความเข้มแสงที่วัดได้จากเซ็นเซอร์แบบอนาล็อก```
+payload["luminosity"] = analogval;  // ความเข้มแสงที่วัดได้จากเซ็นเซอร์แบบอนาล็อก
 
 char jsonData[512];
 serializeJson(jsonDoc, jsonData);
 client.publish("iot-frames", jsonData);
-
+```
 การใช้งาน MQTT Payload
 Publisher จะสร้าง Payload โดยใส่ข้อมูลลงใน JSON Document จากนั้นใช้ฟังก์ชัน serializeJson() เพื่อแปลงข้อมูล JSON ให้อยู่ในรูปแบบข้อความ แล้วจึงส่งข้อมูลนี้ผ่านคำสั่ง client.publish("iot-frames", jsonData);
 Subscriber จะต้องดักรับข้อมูลจาก Topic ที่สนใจ เช่น "iot-frames" และทำการถอดรหัส JSON Payload เพื่อดึงข้อมูลที่ต้องการออกมาใช้งาน
