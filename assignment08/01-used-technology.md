@@ -13,4 +13,4 @@
 - [ ] [Prometheus.] (/assignment01/02-docker-compose-iot.md#prometheus)
 - [ ] [Grafana.]
 - [ ] [Eclipse Mosquitto.](/assignment01/02-docker-compose-iot.md#Eclipse-mosquitto)
-- [ ] [MongoDB.]
+- [ ] [MongoDB.](/assignment01/02-docker-compose-iot.md#MongoDB)
