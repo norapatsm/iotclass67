@@ -12,6 +12,10 @@ Internet of things Class 2567
 - [ ] Data Visualization.  https://github.com/norapatsm/iotclass67/blob/main/assignment07/01-visualization.md
 - [ ] Used technologies. https://github.com/norapatsm/iotclass67/blob/main/assignment08/01-used-technology.md
 
+- [คู่มือการติดตั้ง](docs/setup.md)
+- [คู่มือการตั้งค่า](docs/config.md)
+- [คู่มือการใช้งาน](../README.md)
+
 
 Iot Event Streaming Architecture.[^1]
 GitHub format syntax[^2].
