@@ -73,7 +73,7 @@ services:
     links:
       - zookeeper
 ```
-
+## kafka rest proxy
 - ส่วนของ kafka rest proxy เป็น service ที่ให้ restful API เพื่อเชื่อมต่อกับ Kafka Cluster เพื่อเข้าถึงและจัดการข้อมูลใน kafka ผ่าน http api
 ```
  # The Kafka REST Proxy provides a RESTful interface to a Kafka cluster.
