@@ -442,7 +442,8 @@ void LIGHTBLUELELED() {
 ```
 
 ![Example Image](flowchart.png)
-การทำงาน esp32s2dev module cucumberของผมคือ
+
+## การทำงาน esp32s2dev module cucumber
 1 เมื่อเครื่องเปิดไฟจะสีเเดง
 2 ทำการเชื่อมต่อwifiหากเชือมต่อไม่ได้หรือกำลังเชื่อมจะขึ้นไฟสีเหลือง
     2.1 หากเชือมต่อไม่ได้หรือกำลังเชื่อมจะขึ้นไฟสีเหลือ
