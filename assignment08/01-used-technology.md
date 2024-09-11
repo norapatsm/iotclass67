@@ -1,6 +1,6 @@
 # Used technology
 
-- [ ] [Ubuntu Server Installation]
+- [ ] [Ubuntu Server Installation](01-install-server.md#How-to-install-Server)
 - [ ] [Docker Containerization]
 - [ ] [Kafka Streams.]
 - [ ] [Spring Kafka.]
