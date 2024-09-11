@@ -200,7 +200,8 @@ services:
       - ./mosquitto/config:/mosquitto/config
 
 ```
-- ส่วนของ mongo DB เป็นเหมือนที่เก็บข้อมูลและที่พักข้อมูลที่รับมาจาก sensor เพื่อรอส่งไปยัง service ค่างๆที่เชื่อมต่อกับ Mongo DB
+## MongoDB
+- ส่วนของ MongoDB เป็นเหมือนที่เก็บข้อมูลและที่พักข้อมูลที่รับมาจาก sensor เพื่อรอส่งไปยัง service ค่างๆที่เชื่อมต่อกับ Mongo DB
 
 ```
  mongo:
