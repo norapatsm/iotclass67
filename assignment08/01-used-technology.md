@@ -10,7 +10,6 @@
 - [ ] [Spring Boot 2.3.3 / Apache Maven 3.6.3.]
 - [ ] [Spring Boot Starter Actuator.]
 - [ ] [Micrometer Registry Prometheus.]
-- [ ] [NodeExporter (Exporter for machine metrics).]
 - [ ] [Prometheus.]
 - [ ] [Grafana.]
 - [ ] [Eclipse Mosquitto.]
