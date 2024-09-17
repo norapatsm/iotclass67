@@ -242,7 +242,7 @@ services:
     ports:
       - '8085:3000'
 ```
-## Prometheus 
+## Prometheus
 -  Prometheus ใช้สำหรับการตรวจสอบและการแจ้งเตือนเหตุการณ์ (event monitoring and alerting) โดยเน้นการเก็บข้อมูลเมตริกในรูปแบบ time series
 
 ```
