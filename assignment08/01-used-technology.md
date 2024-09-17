@@ -11,5 +11,5 @@
 - [ ] [Spring Boot Starter Actuator.](/assignment03/01-ingest.md#spring-boot)
 - [ ] [Prometheus.] (/assignment01/02-docker-compose-iot.md#prometheus)
 - [ ] [Grafana.] (/assignment07/01-visualization.md#data-visualization)
-- [ ] [Eclipse Mosquitto.](/assignment01/02-docker-compose-iot.md#Eclipse-mosquitto)
+- [ ] [Eclipse Mosquitto.](/assignment01/02-docker-compose-iot.md#Eclipse-Mosquitto)
 - [ ] [MongoDB.](/assignment01/02-docker-compose-iot.md#MongoDB)
