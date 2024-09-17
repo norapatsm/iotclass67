@@ -9,7 +9,7 @@
 - [ ] [Kafka Rest Proxy](/assignment01/02-docker-compose-iot.md)
 - [ ] [Spring Boot 2.3.3 / Apache Maven 3.6.3.](/assignment03/01-ingest.md#apache-maven)
 - [ ] [Spring Boot Starter Actuator.](/assignment03/01-ingest.md#spring-boot)
-- [ ] [Prometheus.] (/assignment01/02-docker-compose-iot.md#prometheus)
+- [ ] [Prometheus.] (/assignment01/02-docker-compose-iot.md#Prometheus)
 - [ ] [Grafana.] (/assignment07/01-visualization.md#data-visualization)
 - [ ] [Eclipse Mosquitto.](/assignment01/02-docker-compose-iot.md#Eclipse-Mosquitto)
 - [ ] [MongoDB.](/assignment01/02-docker-compose-iot.md#MongoDB)
