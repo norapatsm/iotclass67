@@ -3,6 +3,13 @@
 
 ![Example Image](analyze.png)
 
+
+
+## Spring kafka
+- ในภาพนี้ Spring Kafka  พื่อเชื่อมต่อกับ Kafka และดึงข้อมูลออกมาจาก Topic นำมาทำกระบวนต่างๆใน aggregations 
+ภายในบล็อก Kafka Streams Processors และส่งผลลัพธ์กลับไปยัง Kafka
+- ภายใน docker compose ส่วนนี้จะอยู่ภายใน container iot-processor
+
 ##  Aggregate Metrics By Sensor Processor
 - ทำหน้าที่รวบรวมข้อมูลจากเซ็นเซอร์แต่ละตัว โดยใช้ Kafka Streams เพื่อวิเคราะห์และสรุปข้อมูลที่มาจาก topics
 
@@ -11,5 +18,7 @@
 
 ## Aggregate Metrics time series
 - จัดการและวิเคราะห์ข้อมูลเป็นแบบ time-series ทำให้สามารถดูการเปลี่ยนแปลงของข้อมูลตลอดเวลาในรูปแบบเส้นกราฟของ time series
+
+
 
 

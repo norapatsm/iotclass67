@@ -183,7 +183,15 @@ services:
       - kafka
 ```
 ## Eclipse Mosquitto
-- ส่วนของ mosquitto ทำหน้าที่หลักในการประสานการสื่อสารระหว่างอุปกรณ์ IoT ในระบบ Mosquitto ทำหน้าที่เป็น message broker สำหรับโปรโตคอล MQTT ซึ่งจะจัดการกับการส่งข้อความระหว่าง clients โดยใช้โมเดล publish/subscribe ซึ่งช่วยให้ clients สามารถส่ง (publish) ข้อความไปยัง topics ที่กำหนด และ clients อื่นๆ สามารถรับ (subscribe) ข้อความจาก topics 
+- ส่วนของ mosquitto ทำหน้าที่หลักในการประสานการสื่อสารระหว่างอุปกรณ์ IoT ในระบบ Mosquitto ทำหน้าที่เป็น message broker สำหรับโปรโตคอล MQTT ซึ่งจะจัดการกับการส่งข้อความระหว่าง clients โดยใช้โมเดล publish/subscribe ซึ่งช่วยให้ clients สามารถส่ง (publish) ข้อความไปยัง topics ที่กำหนด และ clients อื่นๆ สามารถรับ (subscribe) ข้อความจาก topics
+
+![Example Image](MQTT.png)
+
+ในส่วนของงาน iot-event ของเรานี้ เราใช้ MQTT ในการับข้อมูลจาก sensor 
+ต่างๆเข้ามาและใช้ WI-FI(MQTT Broker)
+เป็นตัวสื่อสาร(รับ-ส่ง) และส่งข้อมูลไปยัง kafka-connect  เพื่อนำไปจัดเก็บใน
+ apache kafka และส่งต่อไปยัง  IoT-frames-topic 
+
 ```
 # Eclipse Mosquitto is an open source (EPL/EDL licensed) message broker that implements the MQTT protocol versions 5.0, 3.1.1 and 3.1. Mosquitto is lightweight and is suitable for use on all devices from low power single board computers to full servers.
   # The MQTT protocol provides a lightweight method of carrying out messaging using a publish/subscribe model. This makes it suitable for Internet of Things messaging such as with low power sensors or mobile devices such as phones, embedded computers or microcontrollers.
