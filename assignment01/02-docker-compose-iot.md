@@ -7,7 +7,7 @@ command
 
 ## ภายใน docker compose
 - ส่วนนี้คือ volume สำหรับเป็นพื้นที่จะเก็บservice log และ service เริ่มต้นอย่าง Zookeper หน้าที่ของ Zookeper คือ ดูแลทุก serviceและดูแลข้อมูลรวมถึงช่วยประสานงานสำหรับ cluster kafka
-```
+```cpp
 volumes:
     prometheus_data: {}
     grafana_data: {}
@@ -44,7 +44,7 @@ services:
       ZOOKEEPER_AUTOPURGE_PURGE_INTERVAL: 3
 ```
 - ส่วนของ service apache kafka สำหรับ streamimg ข้อมูล แบบ realtime ซึ่งการทำงานของ kafka นั้นจำเป็นต้องให้ kafka ให้addressไปยัง zookeeper เพื่อให้ customer รู้
-```
+```cpp
 # Kafka is a distributed streaming platform. It is used to build real-time streaming
   # data pipelines that reliably move data between systems and platforms, and to build
   # real-time streaming applications that transform or react to the streams of data.
@@ -75,7 +75,7 @@ services:
 ```
 ## kafka rest proxy
 - ส่วนของ kafka rest proxy เป็น service ที่ให้ restful API เพื่อเชื่อมต่อกับ Kafka Cluster เพื่อเข้าถึงและจัดการข้อมูลใน kafka ผ่าน http api
-```
+```cpp
  # The Kafka REST Proxy provides a RESTful interface to a Kafka cluster.
   # It makes it easy to produce and consume messages, view the state
   # of the cluster, and perform administrative actions without using
@@ -111,7 +111,7 @@ services:
 ```
 ## Kafka Connect
 - kafka connect เป็นส่วนในที่ kafka จะเชื่อมต่อกับระบบหรือservice ภายนอก เช่น iot-processor หรือ MongoDB หรือ MQTT protocol ทำให้สื่อสารเข้าออกจากkafkaได้โดยใช้ connectors ที่มีการตั้งค่าไว้
-```
+```cpp
 # Kafka Connect, an open source component of Apache Kafka,
   # is a framework for connecting Kafka with external systems
   # such as databases, key-value stores, search indexes, and file systems.
@@ -183,16 +183,8 @@ services:
       - kafka
 ```
 ## Eclipse Mosquitto
-- ส่วนของ mosquitto ทำหน้าที่หลักในการประสานการสื่อสารระหว่างอุปกรณ์ IoT ในระบบ Mosquitto ทำหน้าที่เป็น message broker สำหรับโปรโตคอล MQTT ซึ่งจะจัดการกับการส่งข้อความระหว่าง clients โดยใช้โมเดล publish/subscribe ซึ่งช่วยให้ clients สามารถส่ง (publish) ข้อความไปยัง topics ที่กำหนด และ clients อื่นๆ สามารถรับ (subscribe) ข้อความจาก topics
-
-![Example Image](MQTT.png)
-
-ในส่วนของงาน iot-event ของเรานี้ เราใช้ MQTT ในการับข้อมูลจาก sensor 
-ต่างๆเข้ามาและใช้ WI-FI(MQTT Broker)
-เป็นตัวสื่อสาร(รับ-ส่ง) และส่งข้อมูลไปยัง kafka-connect  เพื่อนำไปจัดเก็บใน
- apache kafka และส่งต่อไปยัง  IoT-frames-topic 
-
-```
+- ส่วนของ mosquitto ทำหน้าที่หลักในการประสานการสื่อสารระหว่างอุปกรณ์ IoT ในระบบ Mosquitto ทำหน้าที่เป็น message broker สำหรับโปรโตคอล MQTT ซึ่งจะจัดการกับการส่งข้อความระหว่าง clients โดยใช้โมเดล publish/subscribe ซึ่งช่วยให้ clients สามารถส่ง (publish) ข้อความไปยัง topics ที่กำหนด และ clients อื่นๆ สามารถรับ (subscribe) ข้อความจาก topics 
+```cpp
 # Eclipse Mosquitto is an open source (EPL/EDL licensed) message broker that implements the MQTT protocol versions 5.0, 3.1.1 and 3.1. Mosquitto is lightweight and is suitable for use on all devices from low power single board computers to full servers.
   # The MQTT protocol provides a lightweight method of carrying out messaging using a publish/subscribe model. This makes it suitable for Internet of Things messaging such as with low power sensors or mobile devices such as phones, embedded computers or microcontrollers.
   # The Mosquitto project also provides a C library for implementing MQTT clients, and the very popular mosquitto_pub and mosquitto_sub command line MQTT clients.
@@ -211,7 +203,7 @@ services:
 ## MongoDB
 - ส่วนของ MongoDB เป็นเหมือนที่เก็บข้อมูลและที่พักข้อมูลที่รับมาจาก sensor เพื่อรอส่งไปยัง service ค่างๆที่เชื่อมต่อกับ Mongo DB
 
-```
+```cpp
  mongo:
     image: mongo:4.4.20
     container_name: mongo
@@ -225,7 +217,7 @@ services:
 ```
 - ส่วนของ Visualization หรือส่วนแสดงผล โดย grafana จะแสดงผลในรูปแบบ dashboard โชว์ทุกข้อมูลที่รับมากจาก sensor 
 
-```
+```cpp
 # Grafana is a multi-platform open source analytics and interactive visualization web application. 
   # It provides charts, graphs, and alerts for the web when connected to supported data sources. 
   # It is expandable through a plug-in system. End users can create complex monitoring dashboards using interactive query builders.
@@ -253,7 +245,7 @@ services:
 ## Prometheus
 -  Prometheus ใช้สำหรับการตรวจสอบและการแจ้งเตือนเหตุการณ์ (event monitoring and alerting) โดยเน้นการเก็บข้อมูลเมตริกในรูปแบบ time series
 
-```
+```cpp
 # Prometheus is a free software application used for event monitoring and alerting.
   # It records real-time metrics in a time series database built using a HTTP pull model, with flexible queries and real-time alerting.
   # The project is written in Go and licensed under the Apache 2 License, with source code available on GitHub,
@@ -277,7 +269,7 @@ services:
 ```
 - ส่วน iot_sensor_1 เป็น sensor จำลองโดยดึงจาก ssanchez11/iot_sensor:0.0.1-SNAPSHOT มาจำลองเพื่อส่งข้อมูลงไปยัง kafka
 
-```
+```cpp
  # # IoT Sensor 1
   iot_sensor_1:
     image: ssanchez11/iot_sensor:0.0.1-SNAPSHOT
@@ -294,7 +286,7 @@ services:
 ```
 - ส่วน iot-processor ใช้ ประมวลผลข้อมูลจากเซ็นเซอร์ IoT รับข้อมูลจาก Kafka Connect และประมวลผลข้อมูล IoT 
 
-```
+```cpp
 # IoT Processor
   iot-processor:
     image: ssanchez11/iot_processor:0.0.1-SNAPSHOT
@@ -311,7 +303,7 @@ services:
 
 ## วิธีการรัน script แต่ละ service เพื่อทำตามลำดับขั้นตอน
 ## start-service #0
-```
+```cpp
 #!/bin/bash
 
 docker compose up zookeeper kafka
@@ -320,7 +312,7 @@ docker compose up zookeeper kafka
 - command
 - $ sh start_0zookeeper_kafka.sh
 ## start-service #1
-```
+```cpp
 #!/bin/bash
 
 docker compose up kafka-rest-proxy kafka-connect mosquitto mongo grafana prometheus
@@ -329,7 +321,7 @@ docker compose up kafka-rest-proxy kafka-connect mosquitto mongo grafana prometh
 - command เมื่อส่วนนี้ทำงานถึง kafka-connect เริ่ม respond 0 หรือ 200 ก็เริ่มส่วน script ของ iot-processor
 - $ sh start_1kafka_service.sh
 ## start-service #2
-```
+```cpp
 #!/bin/bash
 
 docker compose up iot-processor
@@ -338,7 +330,7 @@ docker compose up iot-processor
 - command
 - $ sh start_2iot_processor.sh
 ## start-service #3
-```
+```cpp
 #!/bin/bash
 
 docker compose up iot_sensor_1

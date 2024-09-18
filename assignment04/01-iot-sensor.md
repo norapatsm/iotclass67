@@ -35,7 +35,7 @@ Subscriber จะต้องดักรับข้อมูลจาก Topic
 ![Example Image](cucumber.png)
 
 ## code
-```
+``` cpp
 #include <Wire.h>
 #include <Adafruit_BMP280.h>
 #include <SensirionI2cSht4x.h>
