@@ -3,8 +3,8 @@
 - [ ] [Ubuntu Server Installation](/assignment01/01-install-server.md#how-to-install-server)
 - [ ] [Docker Containerization](/assignment01/02-docker-compose-iot.md#IoT-Docker-compose)
 - [ ] [Kafka Streams.](/assignment05/01-analyze.md#aggregate-metrics-by-sensor-processor)
-- [ ] [Spring Kafka.]
-- [ ] [Eclipse Paho MQTT Client.]
+- [ ] [Spring Kafka.](/assignment05/01-analyze.md#spring-kafka)
+- [ ] [Eclipse Paho MQTT Client.](/assignment01/02-docker-compose-iot.md#eclipse-mosquitto)
 - [ ] [Kafka Connect.](/assignment01/02-docker-compose-iot.md#kafka-connect)
 - [ ] [Kafka Rest Proxy](/assignment01/02-docker-compose-iot.md)
 - [ ] [Spring Boot 2.3.3 / Apache Maven 3.6.3.](/assignment03/01-ingest.md#apache-maven)
