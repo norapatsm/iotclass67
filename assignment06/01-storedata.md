@@ -51,3 +51,126 @@
       - MONGO_INITDB_ROOT_PASSWORD=${MONGO_ROOT_PASSWORD}
       - MONGO_INITDB_DATABASE=${MONGO_DB}
 ```
+
+## Config
+# 1. iot-aggregate-metrics-place-mongodb-sink
+```cpp
+{
+   "name":"iot-aggregate-metrics-place-mongodb-sink",
+   "config":{
+      "connector.class":"com.mongodb.kafka.connect.MongoSinkConnector",
+      "tasks.max":1,
+      "topics":"iot-aggregate-metrics-place",
+      "connection.uri":"mongodb://devroot:devroot@mongo:27017",
+      "database":"iot",
+      "collection":"iot_aggregate_metrics_place",
+      "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+      "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+      "value.converter.schemas.enable": false,
+      "key.converter.schemas.enable":false
+   }
+}
+```
+- Config คือการกำหนดให้ Kafka Connector รับข้อมูลจาก Kafka topic ชื่อ iot-aggregate-metrics-place และส่งข้อมูลนั้นไปยังฐานข้อมูล 
+MongoDB โดยจะบันทึกข้อมูลลงใน collection ชื่อ iot_aggregate_metrics_place ภายฐานข้อมูล ของ iot โดยข้อมูลจะถูกแปลงเป็น 
+JSON ก่อนที่จะถูกบันทึกใน MongoDB
+
+# 2 iot-aggregate-metrics-sensor-mongodb-sink 
+```cpp
+{
+   "name":"iot-aggregate-metrics-sensor-mongodb-sink",
+   "config":{
+      "connector.class":"com.mongodb.kafka.connect.MongoSinkConnector",
+      "tasks.max":1,
+      "topics":"iot-aggregate-metrics-sensor",
+      "connection.uri":"mongodb://devroot:devroot@mongo:27017",
+      "database":"iot",
+      "collection":"iot_aggregate_metrics_sensor",
+      "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+      "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+      "value.converter.schemas.enable": false,
+      "key.converter.schemas.enable":false
+   }
+}
+```
+- Kafka Connector นี้จะรับข้อมูลจาก Kafka topic คือ iot-aggregate-metrics-sensor และนำข้อมูลไปบันทึกในฐานข้อมูล MongoDB โดยจะถูกจัดชื่อ iot_aggregate_metrics_sensor 
+
+# 3 iot-frames-mongodb-sink
+```cpp
+{
+   "name":"iot-frames-mongodb-sink",
+   "config":{
+      "connector.class":"com.mongodb.kafka.connect.MongoSinkConnector",
+      "tasks.max":1,
+      "topics":"iot-frames",
+      "connection.uri":"mongodb://devroot:devroot@mongo:27017",
+      "database":"iot",
+      "collection":"iot_frames",
+      "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+      "key.converter": "org.apache.kafka.connect.json.JsonConverter",
+      "value.converter.schemas.enable": false,
+      "key.converter.schemas.enable":false
+   }
+}
+```
+- ทำงานเช่นเดียวกันกับส่วนบน รับข้อมูลจาก kafka topic (iot-frames) และบันทึกลง MongoDB โดยจะแปลงทั้ง key และ value ของ Kafka message เป็น JSON ก่อนบันทึก
+
+# 4 mqtt-source
+```cpp
+{
+    "name": "mqtt-source",
+    "config": {
+        "connector.class": "io.confluent.connect.mqtt.MqttSourceConnector",
+        "tasks.max": 1,
+        "mqtt.server.uri": "tcp://mosquitto:1883",
+        "mqtt.topics": "iot-frames",
+        "mqtt.username": "kafka-connect",
+        "mqtt.password": "kafka-connect",
+        "mqtt.qos": 1,
+        "kafka.topic": "iot-frames",
+        "value.converter": "org.apache.kafka.connect.converters.ByteArrayConverter",
+        "key.converter": "org.apache.kafka.connect.json.JsonConverter",
+        "key.converter.schemas.enable":false,
+        "converter.encoding": "UTF-8",
+        "value.converter.schemas.enable": false,
+        "confluent.topic.bootstrap.servers": "kafka:9092",
+        "confluent.topic.replication.factor": 1,
+        "transforms":"createMap,createKey,extractString",
+        "transforms.createMap.type":"org.apache.kafka.connect.transforms.HoistField$Value",
+        "transforms.createMap.field":"id",
+        "transforms.createKey.type":"org.apache.kafka.connect.transforms.ValueToKey",
+        "transforms.createKey.fields":"id",
+        "transforms.extractString.type":"org.apache.kafka.connect.transforms.ExtractField$Value",
+        "transforms.extractString.field":"id"
+    }
+}
+```
+- Kafka Connector นี้จะเชื่อมต่อกับ MQTT (Mosquitto) และรับข้อมูลจาก MQTT topic ชื่อ iot-frames 
+ข้อมูลจะถูกแปลงเป็นรูปแบบByteArray และ JSON ก่อนส่งไปยัง Kafka topic ชื่อ  โดยมีการ process key 
+เพื่อสร้างและดึงค่า id สำหรับใช้งานเป็น key ใน Kafka.
+
+
+# 5 prometheus-connector-sink
+```cpp
+{
+  "name" : "prometheus-connector-sink",
+  "config" : {
+   "topics":"iot-metrics-time-series",
+   "connector.class" : "io.confluent.connect.prometheus.PrometheusMetricsSinkConnector",
+   "tasks.max" : "1",
+   "confluent.topic.bootstrap.servers":"kafka:9092",
+   "prometheus.scrape.url": "http://0.0.0.0:8084/iot-metrics-time-series",
+   "prometheus.listener.url": "http://0.0.0.0:8084/iot-metrics-time-series",
+   "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+   "key.converter": "org.apache.kafka.connect.json.JsonConverter",
+   "value.converter.schemas.enable": false,
+   "key.converter.schemas.enable":false,
+   "reporter.bootstrap.servers": "kafka:9092",
+   "reporter.result.topic.replication.factor": "1",
+   "reporter.error.topic.replication.factor": "1",
+   "behavior.on.error": "log"
+  }
+}
+```
+- ในส่วน kafka connector นี้จะรับข้อมูลจาก Kafka และส่งไปยัง Prometheus เพื่อการมอนิเตอร์และเก็บข้อมูล metrics โดยใช้ PrometheusMetricsSinkConnector
+Prometheus จะตรวจสอบและนำข้อมูลเหล่านี้ไป Monitoring และเก็บ metrics
